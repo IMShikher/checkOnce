@@ -1,2 +1,2 @@
 # checkOnce
-Check Once before you watch any movie or TV series.
+ checkOnce before watching a movie or TV series.
