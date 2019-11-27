@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View , StyleSheet, FlatList, Text, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { db } from '../../firebaseConfig'; 
 
+const itemsRef = db.ref('movies/');
 
 export const HomeGrid = () => {
 
     onGridImagePressed = () => {
-        console.warn("THis is image damn it!!");
+        console.warn("THis is imageAgain damn it!!");
+        console.warn('HelloThisisFooBar', itemsRef);
     }
     return (
        

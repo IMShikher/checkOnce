@@ -1,0 +1,17 @@
+{
+    "movies" : [
+        {
+            "movieName" : "Andhadhun",
+            "movieRating" : "4",
+            "movieDescription" : "Its Good",
+            "movieComparison" : "Its much better" 
+        },
+        {
+            "movieName" : "DreamGirl",
+            "movieRating" : "3",
+            "movieDescription" : "Its Best",
+            "movieComparison" : "Its too better" 
+        }
+    ]
+}
+  
