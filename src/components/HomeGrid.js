@@ -1,26 +1,28 @@
 import React from 'react';
 import { View , StyleSheet, FlatList, Text, Dimensions, Image, TouchableOpacity } from 'react-native';
-import { db } from '../../firebaseConfig'; 
+import { Actions } from 'react-native-router-flux';
 
-const itemsRef = db.ref('movies/');
 
 export const HomeGrid = () => {
 
     onGridImagePressed = () => {
-        console.warn("THis is imageAgain damn it!!");
-        console.warn('HelloThisisFooBar', itemsRef);
+      let lastListitem = {
+        plotRating: '',
+        plotDescription: ''
+      };
+      console.warn("THis is imageAgain damn it!!");
+      Actions.cardInformation( {listItem: lastListitem} );
     }
     return (
        
         <FlatList
-          data={data}
+          data={homeGridData}
           renderItem={({item}) => (
-            <TouchableOpacity onPress={ this.onGridImagePressed }>
+            <TouchableOpacity   style = {{ backgroundColor: item.backgroundColor }} onPress={ this.onGridImagePressed }>
               <View style={styles.itemContainer}>            
-                    <Image
-                        style={{flex: 1, width: size, height: size, resizeMode : 'stretch' }}
-                        source = {item.value}
-                    />
+                    <Text style = { styles.textStyle }>
+                      {item.value}
+                     </Text> 
               </View>
             </TouchableOpacity>
           )}
@@ -30,13 +32,13 @@ export const HomeGrid = () => {
       );
 }
 
-const data = [
-    {id: 'a', value: require('../photos/photo3.jpg')},
-    {id: 'b', value: require('../photos/photo2.jpeg')},
-    {id: 'c', value: require('../photos/photo4.jpg')},
-    {id: 'd', value: require('../photos/photo3.jpg')},
-    {id: 'e', value: require('../photos/photo2.jpeg')},
-    {id: 'f', value: require('../photos/photo4.jpg')}
+const homeGridData = [
+    {id: '1', value: 'Bollywood Movies', backgroundColor: 'red'},
+    {id: '2', value: 'Hollywood Movies', backgroundColor: 'blue'},
+    {id: '3', value: 'Amazon Prime', backgroundColor: 'green'},
+    {id: '4', value: 'Netflix', backgroundColor: 'red'},
+    {id: '5', value: 'Zee5', backgroundColor: 'black'},
+    {id: '6', value: 'Hotstar', backgroundColor: 'blue'}
   ];
 
 const numColumns = 2;
@@ -45,9 +47,22 @@ const styles = StyleSheet.create({
     itemContainer: {
       width: size,
       height: size,
+      justifyContent: 'center', 
+      alignItems: 'center',
+      flexDirection: 'row',
+      flex:1,
+      flexWrap: 'wrap' 
     },
     item: {
       flex: 1,
       backgroundColor: 'lightblue',
+    },
+    textStyle : {
+      color: 'white',
+      fontSize: 20,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginTop: 3,
+      flex:1
     }
   });
