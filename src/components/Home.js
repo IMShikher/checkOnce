@@ -3,8 +3,6 @@ import { StyleSheet,  View } from 'react-native';
 import { SliderBox } from 'react-native-image-slider-box';
 import { HomeGrid } from './HomeGrid';
 
-
-
 export default class Home extends Component {
     constructor(props) {
         super(props);
@@ -20,10 +18,10 @@ export default class Home extends Component {
 
     render() {
         return (
-            <View style={styles.container} onLayout={this.onLayout}>
+            <View style={styles.container}>
                 <SliderBox
-                    images= {{uri: this.state.images }}
-                    sliderBoxHeight={200}
+                    images= { this.state.images }
+                    sliderBoxHeight={400}
                     onCurrentImagePressed={index =>
                         console.warn(`image ${index} pressed`)
                     }
@@ -31,7 +29,7 @@ export default class Home extends Component {
                 <HomeGrid />
             </View>
         );
-      }
+    }
 }
 const styles = StyleSheet.create({
     container: {

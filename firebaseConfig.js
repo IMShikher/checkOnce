@@ -5,7 +5,7 @@ const firebaseConfig = {
     authDomain: "checkonce-34c7a.firebaseapp.com",
     databaseURL: "https://checkonce-34c7a.firebaseio.com",
     projectId: "checkonce-34c7a",
-    storageBucket: "",
+    storageBucket: "checkonce-34c7a.appspot.com",
     messagingSenderId: "395786825796",
     appId: "1:395786825796:web:e1e2ab20cc92b282"
   };

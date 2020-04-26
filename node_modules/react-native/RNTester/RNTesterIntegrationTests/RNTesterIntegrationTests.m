@@ -74,9 +74,6 @@ RCT_TEST(SyncMethodTest)
 RCT_TEST(PromiseTest)
 RCT_TEST_ONLY_WITH_PACKAGER(WebSocketTest) // Requires a WebSocket test server, see scripts/objc-test.sh
 RCT_TEST(AccessibilityManagerTest)
-
-#if !TARGET_OS_TV // tvOS does not fully support WebView
-RCT_TEST(WebViewTest)
-#endif
+RCT_TEST(GlobalEvalWithSourceUrlTest)
 
 @end

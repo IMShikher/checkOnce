@@ -6,17 +6,13 @@ import { Actions } from 'react-native-router-flux';
 export const HomeGrid = () => {
 
     onGridImagePressed = () => {
-      let lastListitem = {
-        plotRating: '',
-        plotDescription: ''
-      };
       console.warn("THis is imageAgain damn it!!");
-      Actions.cardInformation( {listItem: lastListitem} );
+      Actions.displayCardInformation();
     }
     return (
        
         <FlatList
-          data={homeGridData}
+          data={ homeGridData }
           renderItem={({item}) => (
             <TouchableOpacity   style = {{ backgroundColor: item.backgroundColor }} onPress={ this.onGridImagePressed }>
               <View style={styles.itemContainer}>            

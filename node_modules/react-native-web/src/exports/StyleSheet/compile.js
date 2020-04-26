@@ -150,7 +150,7 @@ function createAtomicRules(identifier: string, property, value): Rules {
       if (value === 'none') {
         rules.push(
           `${selector}::-webkit-scrollbar{display:none}`,
-          `${selector}{overflow:-moz-scrollbars-none;-ms-overflow-style:none}`
+          `${selector}{overflow:-moz-scrollbars-none;-ms-overflow-style:none;scrollbar-width:none;}`
         );
       }
       break;
