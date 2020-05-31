@@ -1,48 +1,120 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Table, Row, Rows } from 'react-native-table-component';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import SimpleAccordion from 'react-native-simple-accordian';
 
+const accordianData = 'This is sample Accordian Text....';
 
-export default class CompareTwoItems extends Component {
-
-    state = {
-        listDataFromDB: [],
-        lastKey: null
-    };
-
-    
-    componentDidMount() 
+const sampleAccordianData = [
     {
-        console.warn("ItemsRef "+itemsRef);
-        itemsRef.on('value', ( snapshot ) => {
-            var data = snapshot.val();
-            this.setState({
-                listDataFromDB : snapshot.val(),
-            });
-            console.warn("ListDataIsHere "+this.state.listDataFromDB);
-            var keys = Object.keys(data);
-            keys.forEach((key) => 
-            { 
-                this.setState({
-                    lastKey: key
-                });
-                console.warn("This is great"+data[key])
-            });
+      title: 'Accordian 1 ',
+      content: accordianData
+    },
+    {
+      title: 'Accordian 2',
+      content: accordianData
+    },
+    {
+      title: 'Accordian 3',
+      content: accordianData
+    }
+  ];
 
-            console.warn("LastKeyIsHere "+this.state.lastKey);
+
+class CompareTwoItems extends Component
+{
+    constructor(props){
+        super(props)
+        this.state = ({
+            content:'',
+            open: false,
         });
     }
 
-    render(props)
-    {
-        const items= [];
-        for (const [index, value] of this.state.listDataFromDB.entries()) {
-            items.push(<li key={index}>{value}</li>)
-          }
+    onChangeAccordian(section) {
+        this.setState({ open: section });
+     
+      }
+
+    renderHeader(section, i, isOpen) {
+        return (
+          <View style={{backgroundColor:'#ffffff',flexDirection:'row'}}>
+            <Text style={[styles.headerText,{padding:10,textAlign:'left'}]}>{section.title}</Text>
+          </View>
+        );
+      }
+
+      renderContent(section, i, isOpen) {
+        return (
+          <View style={styles.content}>
+            <Text>{section.content}</Text>
+          </View>
+        );
+      }
+
+
+    render(){
         return(
             <View>
-                {items}
+                <Text>
+                    Text For the First one. {this.props.firstItem.plotDescription}
+                </Text>
+                <Text>
+                    Text For the Second one. {this.props.secondItem.plotDescription}
+                </Text>
+
+                <SimpleAccordion
+                    sections={this.props.firstItem}
+                    renderHeader= {this.renderHeader}
+                    renderContent={this.renderContent}
+                    duration={1000}
+                    touchableComponent={TouchableOpacity}
+                    onChange={this.onChangeAccordian.bind(this)}
+                    activeSection={this.state.open}
+                />
+
             </View>
         );
     }
 }
+export default CompareTwoItems;
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor:'#2c2c2c'
+      
+    },
+    headerText1:{
+      color:'white',
+      textAlign:'center',
+      fontSize:22
+     
+    },
+    headerTextView:{
+      height:50,
+      borderWidth:1,
+      backgroundColor:'#383636',
+      justifyContent:'center',
+    },
+    title: {
+      textAlign: 'center',
+      fontSize: 22,
+      fontWeight: '300',
+      marginBottom: 20,
+      color:'#ffffff'
+    },
+    header:{
+        flex:1
+    },
+    headerText: {
+      textAlign: 'center',
+      fontSize: 16,
+      fontWeight: '500',
+    },
+    content: {
+      padding: 20,
+      backgroundColor: '#ffffff'
+    },
+  });
+    

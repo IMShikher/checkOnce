@@ -29,12 +29,12 @@ export const HomeGrid = () => {
 }
 
 const homeGridData = [
-    {id: '1', value: 'Bollywood Movies', backgroundColor: 'red'},
-    {id: '2', value: 'Hollywood Movies', backgroundColor: 'blue'},
-    {id: '3', value: 'Amazon Prime', backgroundColor: 'green'},
-    {id: '4', value: 'Netflix', backgroundColor: 'red'},
-    {id: '5', value: 'Zee5', backgroundColor: 'black'},
-    {id: '6', value: 'Hotstar', backgroundColor: 'blue'}
+    {id: '1', value: 'Movies', backgroundColor: 'red'},
+    {id: '2', value: 'Seasons', backgroundColor: 'blue'},
+    {id: '3', value: 'Web-Series', backgroundColor: 'green'},
+    {id: '4', value: 'Cartoons', backgroundColor: 'red'},
+    {id: '5', value: 'OTT Platform', backgroundColor: 'black'},
+    {id: '6', value: 'Companies', backgroundColor: 'blue'}
   ];
 
 const numColumns = 2;
