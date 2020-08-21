@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import SimpleAccordion from 'react-native-simple-accordian';
 
 const accordianData = 'This is sample Accordian Text....';
@@ -38,32 +38,45 @@ class CompareTwoItems extends Component
     renderHeader(section, i, isOpen) {
         return (
           <View style={{backgroundColor:'#ffffff',flexDirection:'row'}}>
-            <Text style={[styles.headerText,{padding:10,textAlign:'left'}]}>{section.title}</Text>
+            <Text style={[styles.headerText,{padding:10,textAlign:'left'}]}>{section.key}</Text>
           </View>
         );
       }
 
-      renderContent(section, i, isOpen) {
-        return (
-          <View style={styles.content}>
-            <Text>{section.content}</Text>
-          </View>
-        );
-      }
+    renderContent(section, i, isOpen) {
+      return (
+        <View style={styles.content}>
+          <Text>{section.value}</Text>
+        </View>
+      );
+    }
 
 
     render(){
-        return(
+
+      var objectKeys = []
+      this.props.moviesDataState.slice(0,1).map((item) => {
+        for (const [key, value] of Object.entries(item)) {
+          objectKeys.push(key)
+        }
+      })
+      
+      var sectionData = []
+      var moviesData = this.props.moviesDataState;
+      var fullData = objectKeys.map((item) => {
+
+      var combineDataForItem = moviesData[0][item]+"\n"+moviesData[1][item]
+
+      const obj = { 'key':item, 'value': combineDataForItem };
+      sectionData.push(obj)
+      })
+
+      return(
+        <ScrollView style={styles.scrollView}>
             <View>
-                <Text>
-                    Text For the First one. {this.props.firstItem.plotDescription}
-                </Text>
-                <Text>
-                    Text For the Second one. {this.props.secondItem.plotDescription}
-                </Text>
 
                 <SimpleAccordion
-                    sections={this.props.firstItem}
+                    sections={sectionData}
                     renderHeader= {this.renderHeader}
                     renderContent={this.renderContent}
                     duration={1000}
@@ -73,6 +86,7 @@ class CompareTwoItems extends Component
                 />
 
             </View>
+        </ScrollView>
         );
     }
 }
@@ -116,5 +130,15 @@ const styles = StyleSheet.create({
       padding: 20,
       backgroundColor: '#ffffff'
     },
+    TextStyle: {
+ 
+      textAlign: 'left',
+      fontSize: 20,
+      textDecorationLine: 'underline',
+       
+      },
+    scrollView: {
+      marginHorizontal: 20
+    }
   });
     

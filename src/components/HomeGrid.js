@@ -1,40 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View , StyleSheet, FlatList, Text, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 
-export const HomeGrid = () => {
+export class HomeGrid extends Component {
 
-    onGridImagePressed = () => {
-      console.warn("THis is imageAgain damn it!!");
-      Actions.displayCardInformation();
+    onGridImagePressed() 
+    {
+      Actions.searchTwoItems();
     }
-    return (
-       
-        <FlatList
-          data={ homeGridData }
-          renderItem={({item}) => (
-            <TouchableOpacity   style = {{ backgroundColor: item.backgroundColor }} onPress={ this.onGridImagePressed }>
-              <View style={styles.itemContainer}>            
-                    <Text style = { styles.textStyle }>
-                      {item.value}
-                     </Text> 
-              </View>
-            </TouchableOpacity>
-          )}
-          keyExtractor={item => item.id}
-          numColumns={numColumns} />
+
+    render(){
+      return (
+       <View style = {styles.parentViewStyle}>
+          <FlatList
+            data={ homeGridData }
+            renderItem={({item}) => (
+              <TouchableOpacity   style = {{ backgroundColor: item.backgroundColor, height:150}} onPress={ this.onGridImagePressed }>
+                <View style={styles.itemContainer}>            
+                      <Text style = { styles.textStyle }>
+                        {item.value}
+                      </Text> 
+                </View>
+              </TouchableOpacity>
+            )}
+            keyExtractor={item => item.id}
+            numColumns={numColumns} />
+       </View>
+
           
       );
-}
+    }
+  }
 
 const homeGridData = [
-    {id: '1', value: 'Movies', backgroundColor: 'red'},
-    {id: '2', value: 'Seasons', backgroundColor: 'blue'},
-    {id: '3', value: 'Web-Series', backgroundColor: 'green'},
-    {id: '4', value: 'Cartoons', backgroundColor: 'red'},
-    {id: '5', value: 'OTT Platform', backgroundColor: 'black'},
-    {id: '6', value: 'Companies', backgroundColor: 'blue'}
+    {id: '1', value: 'Movies', backgroundColor: '#D39576'},
+    {id: '2', value: 'Seasons', backgroundColor: '#6DD0BF'},
+    {id: '3', value: 'Web-Series', backgroundColor: '#A6D376'},
+    {id: '4', value: 'Animations', backgroundColor: '#F05543'},
+    {id: '5', value: 'OTT Platforms', backgroundColor: '#847776'},
+    {id: '6', value: 'Companies', backgroundColor: '#586BB9'}
   ];
 
 const numColumns = 2;
@@ -59,6 +64,9 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       textAlign: 'center',
       marginTop: 3,
+      flex:1
+    },
+    parentViewStyle:{
       flex:1
     }
   });

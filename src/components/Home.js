@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet,  View } from 'react-native';
+import { StyleSheet,  View, SafeAreaView } from 'react-native';
 import { SliderBox } from 'react-native-image-slider-box';
 import { HomeGrid } from './HomeGrid';
+
 
 export default class Home extends Component {
     constructor(props) {

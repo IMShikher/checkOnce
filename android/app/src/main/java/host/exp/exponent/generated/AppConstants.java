@@ -24,11 +24,15 @@ public class AppConstants {
     List<Constants.EmbeddedResponse> embeddedResponses = new ArrayList<>();
 
     
-        // ADD EMBEDDED RESPONSES HERE
-        // START EMBEDDED RESPONSES
-        embeddedResponses.add(new Constants.EmbeddedResponse("https://exp.host/@shikher123/checkOnce", "assets://shell-app-manifest.json", "application/json"));
-        embeddedResponses.add(new Constants.EmbeddedResponse("https://d1wp6m56sqw74a.cloudfront.net/%40shikher123%2FcheckOnce%2F1.0.0%2Fc61ba33bc802e6e4d66eb29699f29c16-33.0.0-android.js", "assets://shell-app.bundle", "application/javascript"));
-        // END EMBEDDED RESPONSES
+        
+      
+      
+      
+      // ADD EMBEDDED RESPONSES HERE
+      // START EMBEDDED RESPONSES
+      embeddedResponses.add(new Constants.EmbeddedResponse("https://exp.host/@shikher123/checkOnce", "assets://shell-app-manifest.json", "application/json"));
+      embeddedResponses.add(new Constants.EmbeddedResponse("https://d1wp6m56sqw74a.cloudfront.net/%40shikher123%2FcheckOnce%2F1.0.0%2F6ac8a84dc9b4af74441fbc777b5bd76c-37.0.0-android.js", "assets://shell-app.bundle", "application/javascript"));
+      // END EMBEDDED RESPONSES
     EMBEDDED_RESPONSES = embeddedResponses;
   }
 

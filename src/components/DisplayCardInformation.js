@@ -31,7 +31,16 @@ class DisplayCardInformation extends Component
                 console.warn("This is great"+data[key])
             });
 
-            console.warn("LastKeyIsHere "+this.state.lastKey);
+        });
+
+        itemsRef.child("1").on('value', function(snapshot) {
+            console.log("This the exact key bro "+snapshot.key);
+            console.log("This the exact value bro "+snapshot.val());
+            var movieComparison = snapshot.val().movieComparison;
+            var movieName = snapshot.val().movieName;
+            console.log("This the movieComparison again "+movieComparison);
+            console.log("This the movieName again "+movieName);
+            //console.log("This the movieComparison value bro "+movieComparison.val());
         });
     }
 
